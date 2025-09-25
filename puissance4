@@ -43,3 +43,31 @@ def verifier_victoire(grille, piece):
 
     return False
 
+def puissance4():
+    grille = creer_grille()
+    game_over = False
+    tour = 0
+
+    print("Bienvenue dans le Puissance 4")
+    print("Joueur 1: X & Joueur 2: O")
+
+    while not game_over:
+        afficher_grille(grille)
+
+        col = int(input(f"Joueur {tour+1} - Choisis une colonne (0-{COLONNES-1}): "))
+
+        if 0 <= col < COLONNES and mouvement_valide(grille, col):
+            ligne = obtenir_ligne_disponible(grille, col)
+            piece = "X" if tour == 0 else "O"
+            placer_piece(grille, ligne, col, piece)
+
+            if verifier_victoire(grille, piece):
+                afficher_grille(grille)
+                print(f"Joueur {tour+1} ({piece}) gagne")
+                game_over = True
+        else:
+            print("Coup invalide, choisis une autre colonne.")
+
+        tour = (tour + 1) % 2
+
+puissance4()
