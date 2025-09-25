@@ -20,9 +20,26 @@ def obtenir_ligne_disponible(grille, col):
 def placer_piece(grille, ligne, col, piece):
     grille[ligne][col] = piece
 
+def verifier_victoire(grille, piece):
+    for c in range(COLONNES-3):
+        for l in range(LIGNES):
+            if all(grille[l][c+i] == piece for i in range(4)):
+                return True
 
+    for c in range(COLONNES):
+        for l in range(LIGNES-3):
+            if all(grille[l+i][c] == piece for i in range(4)):
+                return True
 
+    for c in range(COLONNES-3):
+        for l in range(LIGNES-3):
+            if all(grille[l+i][c+i] == piece for i in range(4)):
+                return True
 
+    for c in range(COLONNES-3):
+        for l in range(3, LIGNES):
+            if all(grille[l-i][c+i] == piece for i in range(4)):
+                return True
 
-
+    return False
 
