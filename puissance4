@@ -8,3 +8,21 @@ def afficher_grille(grille):
     for ligne in reversed(grille):
         print(" | ".join(str(x) if x != 0 else "." for x in ligne))
     print("-" * (COLONNES * 4 - 1))
+
+def mouvement_valide(grille, col):
+    return grille[LIGNES-1][col] == 0
+
+def obtenir_ligne_disponible(grille, col):
+    for ligne in range(LIGNES):
+        if grille[ligne][col] == 0:
+            return ligne
+
+def placer_piece(grille, ligne, col, piece):
+    grille[ligne][col] = piece
+
+
+
+
+
+
+
