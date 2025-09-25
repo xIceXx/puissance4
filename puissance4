@@ -1,0 +1,10 @@
+LIGNES = 6
+COLONNES = 7
+
+def creer_grille():
+    return [[0 for _ in range(COLONNES)] for _ in range(LIGNES)]
+
+def afficher_grille(grille):
+    for ligne in reversed(grille):
+        print(" | ".join(str(x) if x != 0 else "." for x in ligne))
+    print("-" * (COLONNES * 4 - 1))
